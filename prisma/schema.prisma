@@ -13,9 +13,20 @@ datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
+/**
+All the properties are considered required unless
+they are default or option in the schema
+*/
+
+model Product {
+  id                String     @id @default(uuid())
+  name              String
+  company           String
+  description       String
+  featured          Boolean
+  image             String
+  price             Int
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  clerkId           String
 }
